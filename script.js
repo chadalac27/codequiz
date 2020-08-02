@@ -2,7 +2,6 @@
 var timer = document.querySelector("#timer");
 var startButton = document.querySelector("#startBtn");
 var questionContainer = document.querySelector("#QuestionCont");
-var Questions = [Quest1, Quest2, Quest3, Quest4, Quest5, Quest6, Quest7];
 var ActiveQuestion = 0;
 var startTime = 100 ;
 var time = "";
@@ -57,9 +56,10 @@ var Quest7 =
     correctIndex: 2,
     penaltyValue: 10
 }
+var Questions = [Quest1, Quest2, Quest3, Quest4, Quest5, Quest6, Quest7];
 //<----- Function for on click start---->
 startButton.addEventListener("click", function(){
-renderQuestion()
+    renderQuestion(); clearStart()
 time = setInterval(tick,1000)    
 })
 //<--- Function to render Questions ---->
@@ -67,4 +67,7 @@ function renderQuestion(){
     if (ActiveQuestion <= Questions.length){
 QuestionDisp.innerHTML = Questions[ActiveQuestion].question + "<hr>";
     }
+}
+function clearStart(){
+document.querySelector("#quizTitle").addclass("d-none")
 }
