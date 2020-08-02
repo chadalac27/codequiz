@@ -69,5 +69,7 @@ QuestionDisp.innerHTML = Questions[ActiveQuestion].question + "<hr>";
     }
 }
 function clearStart(){
-document.querySelector("#quizTitle").addclass("d-none")
+document.querySelector("#quizTitle").classList.add("d-none");
+document.querySelector("quizDescription").classList.add("d-none");
+document.querySelector("startBtnCont").classList.add("d-none")
 }
