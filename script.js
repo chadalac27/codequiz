@@ -59,7 +59,7 @@ var Quest7 =
 var Questions = [Quest1, Quest2, Quest3, Quest4, Quest5, Quest6, Quest7];
 //<----- Function for on click start---->
 startButton.addEventListener("click", function(){
-    renderQuestion(); clearStart()
+    renderQuestion(); clearStart();renderAnswers;
 time = setInterval(tick,1000)    
 })
 //<--- Function to render Questions ---->
@@ -68,8 +68,18 @@ function renderQuestion(){
 QuestionDisp.innerHTML = Questions[ActiveQuestion].question + "<hr>";
     }
 }
+function renderAnswers(){
+    var answerList = document.querySelector("questions")
+    for (let i = 0; i < Questions[ActiveQuestion].answers.length; i++) {
+        answerList.classList.add("btn btn-info");
+        
+    }
+
+}
+
 function clearStart(){
 document.querySelector("#quizTitle").classList.add("d-none");
-document.querySelector("quizDescription").classList.add("d-none");
-document.querySelector("startBtnCont").classList.add("d-none")
+document.querySelector("#quizDescription").classList.add("d-none");
+document.querySelector("#startBtnCont").classList.add("d-none")
 }
+
