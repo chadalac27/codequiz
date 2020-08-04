@@ -3,6 +3,7 @@ var timer = document.querySelector("#timer");
 var startButton = document.querySelector("#startBtn");
 var questionContainer = document.querySelector("#QuestionCont");
 var ActiveQuestion = 0;
+var currentAnswer = 0;
 var startTime = 100 ;
 var time = "";
 var QuestionDisp = document.querySelector("#QuestionDisp")
@@ -58,25 +59,48 @@ var Quest7 =
 }
 var Questions = [Quest1, Quest2, Quest3, Quest4, Quest5, Quest6, Quest7];
 //<----- Function for on click start---->
-startButton.addEventListener("click", function(){
-    renderQuestion(); clearStart();renderAnswers;
-time = setInterval(tick,1000)    
-})
 //<--- Function to render Questions ---->
 function renderQuestion(){
     if (ActiveQuestion <= Questions.length){
-QuestionDisp.innerHTML = Questions[ActiveQuestion].question + "<hr>";
+        QuestionDisp.innerHTML = Questions[ActiveQuestion].question + "<hr>";
     }
 }
-function renderAnswers(){
-    var answerList = document.querySelector("questions")
-    for (let i = 0; i < Questions[ActiveQuestion].answers.length; i++) {
-        answerList.classList.add("btn btn-info");
+//<---- Render answers--->
+//function renderAnswers(){
+    //    var answerList = document.querySelector("questions")
+    //    for (let i = 0; i < Questions[ActiveQuestion].answers.length; i++) {
+        //        answerList.classList.add("btn btn-info");
+        //        
+        //    }
+        //
+        //}
         
-    }
-
-}
-
+        //function renderAnswers(answerList){
+            //var answerList = document.querySelector("#questions")
+            //var answerDisp = document.createElement("button");
+            //        Questions.answers.forEach( function DisplayAnswer() {
+                //            answerList.innerHTML = answerDisp;
+                //            console.log(answerDisp)
+                //        return;
+                //    });
+                //}
+                function renderAnswer(){
+                    var answerList = document.querySelector("#questions")
+                    var QuestAnswers = Questions.answers[0];
+                    QuestAnswers.forEach(function DisplayAnswer() {
+                        var answerbuttons = document.createElement("button")
+                        answerbuttons.innerHTML = QuestAnswers;
+                        answerList.innerHTML = QuestAnswers;
+                        return;  
+                    });
+                }
+                
+                startButton.addEventListener("click", function(){
+                    renderQuestion();
+                    clearStart();
+                    renderAnswers();
+                time = setInterval(tick,1000)    
+                });
 function clearStart(){
 document.querySelector("#quizTitle").classList.add("d-none");
 document.querySelector("#quizDescription").classList.add("d-none");
