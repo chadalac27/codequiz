@@ -62,7 +62,7 @@ renderQuestionandAnswer();
        
 function renderQuestionandAnswer(){
     // if statement stops the for loop after the 6 questions are
-    if(ActiveQuestion >=Questions[ActiveQuestion]){
+    //if(ActiveQuestion >=Questions[ActiveQuestion]){
 
         var currentAnswer = Questions[ActiveQuestion].answers;
         QuestionDisp.innerHTML = Questions[ActiveQuestion].question + "<hr>";
@@ -92,7 +92,7 @@ function renderQuestionandAnswer(){
                 
             });
         };        
-    };
+    //};
         };
 
 function clearStart(){
