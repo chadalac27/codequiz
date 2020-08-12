@@ -29,7 +29,7 @@ var Questions = [
     }, 
     {
         question: "The external JavaScript file must contain the script tag.",
-        answers: ["True","False","Maybe","None of the Above"],
+        answers: ["True","False","maybe","none of the above"],
         correctIndex: "True",
         
     },
@@ -56,43 +56,39 @@ console.log(Questions[ActiveQuestion]);
 //<----- Function for on click start---->
 startButton.addEventListener("click", function(){
     clearStart();
+    renderQuestionandAnswer();
 });
-//renderAnswers();
-renderQuestionandAnswer();
+    //renderAnswers();
        
 function renderQuestionandAnswer(){
-    // if statement stops the for loop after the 6 questions are
-    //if(ActiveQuestion >=Questions[ActiveQuestion]){
-
-        var currentAnswer = Questions[ActiveQuestion].answers;
-        QuestionDisp.innerHTML = Questions[ActiveQuestion].question + "<hr>";
-        for (let i = 0; i < currentAnswer.length; i++) {
-            //document.getElementById("answer-0").innerHTML = currentAnswer[0];
-            //document.getElementById("answer-1").innerHTML = currentAnswer[1];
-            //document.getElementById("answer-2").innerHTML = currentAnswer[2];
-            //document.getElementById("answer-3").innerHTML = currentAnswer[3];
-            var buttongrab = document.getElementById("answer-" + i)
-            buttongrab.textContent = currentAnswer[i];
-            console.log(buttongrab)
-            buttongrab.addEventListener("click", function(){
-                console.log("button clicked");
-                var correctwrongresponse = document.getElementById("correctWrongResponse")
-                if(Questions[ActiveQuestion].correctIndex === buttongrab.textContent){
-                    console.log(this)
-                    correctwrongresponse.textContent = "Correct";
-                    ActiveQuestion ++  ;
-                    renderQuestionandAnswer();
-                    //console.log(this)
-                } else {
-                    correctwrongresponse.textContent = "Wrong";
-                    ActiveQuestion ++  ;
-                    renderQuestionandAnswer();
-                }
-                
-                
-            });
-        };        
-    //};
+    var currentAnswer = Questions[ActiveQuestion].answers;
+    QuestionDisp.innerHTML = Questions[ActiveQuestion].question + "<hr>";
+    for (let i = 0; i < currentAnswer.length; i++) {
+        //document.getElementById("answer-0").innerHTML = currentAnswer[0];
+        //document.getElementById("answer-1").innerHTML = currentAnswer[1];
+        //document.getElementById("answer-2").innerHTML = currentAnswer[2];
+        //document.getElementById("answer-3").innerHTML = currentAnswer[3];
+        var buttongrab = document.getElementById("answer-" + i)
+        buttongrab.textContent = currentAnswer[i];
+        console.log(buttongrab)
+        buttongrab.addEventListener("click", function(){
+            console.log("button clicked");
+            var correctwrongresponse = document.getElementById("correctWrongResponse")
+        if(Questions[ActiveQuestion].correctIndex === buttongrab.textContent){
+            console.log(this)
+                correctwrongresponse.textContent = "Correct";
+                ActiveQuestion ++  ;
+                renderQuestionandAnswer();
+                //console.log(this)
+            } else {
+                correctwrongresponse.textContent = "Wrong";
+                ActiveQuestion ++  ;
+                renderQuestionandAnswer();
+            }
+            
+            
+        });
+    };        
         };
 
 function clearStart(){
