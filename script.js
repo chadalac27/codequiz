@@ -5,9 +5,14 @@ var questionContainer = document.querySelector("#QuestionCont");
 var currentQuestion;
 var questionCounter = 0
 //var currentAnswer = 0;
-var startTime = 100 ;
+//var startTime = 100 ;
 var time = "";
 var questionsHTML = document.querySelector("#QuestionDisp")
+var timeleft = 100;
+var downloadTimer = setInterval(function(){
+    if(timeleft <= 0){
+      clearInterval(downloadTimer);
+    }
 
 var questions = [
 
@@ -63,6 +68,7 @@ startButton.addEventListener("click", function(){
 function nextQuestion(){
   //get current question's answers
  currentQuestion = questions[questionCounter];
+ console.log(currentQuestion)
   var answers = currentQuestion.answers
 
   const buttons = document.getElementsByClassName('answer-button')
@@ -102,6 +108,12 @@ function checkAnswer (event){
 
 
 };
+
+function endQuiz(){
+    if (currentQuestion === 7){
+
+
+}};
 
 function clearStart(){
     var quiztitle = document.querySelector("#quizTitle");
